@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Madhya Pradesh | Heart of Incredible India</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mpRed: '#C8102E',
+                        mpGold: '#D4AF37',
+                        mpForest: '#1B4D3E',
+                        mpDark: '#121212',
+                        mpLight: '#FAFAFA'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-tab { border-bottom: 3px solid #C8102E; color: #C8102E; font-weight: 700; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .dark-glass { background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(12px); }
+        .bottom-nav-active { color: #C8102E; font-weight: 700; }
+        .hero-slide { transition: opacity 0.8s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans pb-20 md:pb-0">
+
+    <!-- TOP HEADER / NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-mpRed to-mpGold flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    MP
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold text-gray-900 leading-none tracking-tight">MADHYA PRADESH</h1>
+                    <p class="text-[10px] font-semibold text-mpRed uppercase tracking-widest">The Heart of Incredible India</p>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+                <a href="#home" class="hover:text-mpRed transition">Home</a>
+                <a href="#destinations" class="hover:text-mpRed transition">Destinations</a>
+                <a href="#regions" class="hover:text-mpRed transition">Regions</a>
+                <a href="#culture" class="hover:text-mpRed transition">Culture & Food</a>
+                <a href="#planner" class="hover:text-mpRed transition">Trip Planner</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleBookmarks()" class="relative p-2 text-gray-700 hover:text-mpRed rounded-full hover:bg-gray-100 transition">
+                    <i class="fa-regular fa-bookmark text-xl"></i>
+                    <span id="bookmark-count" class="absolute top-0 right-0 w-4 h-4 bg-mpRed text-white text-[10px] font-bold rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <button onclick="openBookingModal('General Inquiry')" class="hidden sm:inline-block bg-mpRed hover:bg-red-700 text-white font-semibold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition">
+                    Book Trip
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN HERO SLIDER SECTION -->
+    <section id="home" class="relative h-[80vh] min-h-[500px] bg-black text-white overflow-hidden">
+        <!-- Hero Slides -->
+        <div id="hero-carousel" class="relative w-full h-full">
+            <!-- Slide 1 -->
+            <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=1600&q=80" alt="Khajuraho Temples" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-16 inset-x-0 max-w-7xl mx-auto px-6">
+                    <span class="inline-block px-3 py-1 bg-mpGold/90 text-black text-xs font-bold uppercase rounded-full mb-3">UNESCO Heritage</span>
+                    <h2 class="text-3xl md:text-6xl font-extrabold mb-2 leading-tight">Khajuraho Group of Temples</h2>
+                    <p class="text-sm md:text-lg text-gray-200 max-w-xl mb-6">Masterpieces of Indian art & architectural brilliance dating back to the Chandela dynasty.</p>
+                    <button onclick="openBookingModal('Khajuraho Heritage Tour')" class="bg-mpRed hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-full text-sm shadow-lg">Explore Tour</button>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&w=1600&q=80" alt="Bandhavgarh National Park Tiger" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-16 inset-x-0 max-w-7xl mx-auto px-6">
+                    <span class="inline-block px-3 py-1 bg-mpForest/90 text-white text-xs font-bold uppercase rounded-full mb-3">Wild Tiger Capital</span>
+                    <h2 class="text-3xl md:text-6xl font-extrabold mb-2 leading-tight">Bandhavgarh Jungle Safari</h2>
+                    <p class="text-sm md:text-lg text-gray-200 max-w-xl mb-6">Home to the highest density of Royal Bengal Tigers in the world.</p>
+                    <button onclick="openBookingModal('Bandhavgarh Wildlife Safari')" class="bg-mpRed hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-full text-sm shadow-lg">Book Safari</button>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=1600&q=80" alt="Gwalior Fort" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute bottom-16 inset-x-0 max-w-7xl mx-auto px-6">
+                    <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold uppercase rounded-full mb-3">Royal Fortress</span>
+                    <h2 class="text-3xl md:text-6xl font-extrabold mb-2 leading-tight">Majestic Gwalior Fort</h2>
+                    <p class="text-sm md:text-lg text-gray-200 max-w-xl mb-6">Described by Mughal Emperor Babur as "the pearl among fortresses in India".</p>
+                    <button onclick="openBookingModal('Gwalior Royal Heritage')" class="bg-mpRed hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-full text-sm shadow-lg">Discover Fort</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="absolute bottom-6 right-6 flex items-center gap-2 z-10">
+            <button onclick="setSlide(0)" class="slide-dot w-8 h-2 rounded-full bg-white transition-all"></button>
+            <button onclick="setSlide(1)" class="slide-dot w-2 h-2 rounded-full bg-white/50 transition-all"></button>
+            <button onclick="setSlide(2)" class="slide-dot w-2 h-2 rounded-full bg-white/50 transition-all"></button>
+        </div>
+    </section>
+
+    <!-- TOP DESTINATIONS SECTION WITH LIVE FILTERING -->
+    <section id="destinations" class="py-12 max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+                <span class="text-xs font-bold text-mpRed uppercase tracking-widest">Handpicked Attractions</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1">Explore Top Destinations</h2>
+            </div>
+
+            <!-- Mobile-Optimized Category Filter Chips -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+                <button onclick="filterDestinations('all')" class="filter-btn active-filter bg-mpRed text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm transition">All Places</button>
+                <button onclick="filterDestinations('heritage')" class="filter-btn bg-white text-gray-700 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap hover:bg-gray-100 transition">Heritage</button>
+                <button onclick="filterDestinations('wildlife')" class="filter-btn bg-white text-gray-700 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap hover:bg-gray-100 transition">Wildlife</button>
+                <button onclick="filterDestinations('spiritual')" class="filter-btn bg-white text-gray-700 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap hover:bg-gray-100 transition">Spiritual</button>
+                <button onclick="filterDestinations('nature')" class="filter-btn bg-white text-gray-700 border border-gray-200 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap hover:bg-gray-100 transition">Nature</button>
+            </div>
+        </div>
+
+        <!-- Destination Cards Grid -->
+        <div id="destination-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards generated dynamically via JavaScript -->
+        </div>
+    </section>
+
+    <!-- EXPLORE BY REGION TABS SECTION -->
+    <section id="regions" class="py-12 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="text-xs font-bold text-mpRed uppercase tracking-widest">Regional Highlights</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1">Discover MP by Regions</h2>
+                <p class="text-sm text-gray-600 mt-2">Every region in Madhya Pradesh tells a unique story of culture, wildlife, and architecture.</p>
+            </div>
+
+            <!-- Region Selector Tabs -->
+            <div class="flex justify-center border-b border-gray-300 mb-8 overflow-x-auto no-scrollbar">
+                <button onclick="switchRegion('malwa')" class="region-tab active-tab px-6 py-3 font-semibold text-sm whitespace-nowrap">Malwa</button>
+                <button onclick="switchRegion('mahakaushal')" class="region-tab text-gray-500 hover:text-gray-900 px-6 py-3 font-semibold text-sm whitespace-nowrap">Mahakaushal</button>
+                <button onclick="switchRegion('bundelkhand')" class="region-tab text-gray-500 hover:text-gray-900 px-6 py-3 font-semibold text-sm whitespace-nowrap">Bundelkhand</button>
+                <button onclick="switchRegion('gwalior-chambal')" class="region-tab text-gray-500 hover:text-gray-900 px-6 py-3 font-semibold text-sm whitespace-nowrap">Gwalior-Chambal</button>
+            </div>
+
+            <!-- Region Content Banner -->
+            <div id="region-content" class="bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+                <!-- Dynamic Region Content via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURE & CUISINE SECTION -->
+    <section id="culture" class="py-12 max-w-7xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-xs font-bold text-mpRed uppercase tracking-widest">Flavors & Traditions</span>
+            <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mt-1">Taste & Experience MP</h2>
+            <p class="text-sm text-gray-600 mt-2">From street food delights to ancient handicraft arts, dive deep into central Indian heritage.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Item 1 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Indori Poha & Jalebi" class="w-full h-44 object-cover">
+                <div class="p-4">
+                    <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Culinary Speciality</span>
+                    <h3 class="font-bold text-gray-900 text-base mt-1">Indori Poha & Jalebi</h3>
+                    <p class="text-xs text-gray-600 mt-2">Steamed flattened rice flavored with Jeeravan spice, served with sweet crispy Jalebi.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Chanderi Silk" class="w-full h-44 object-cover">
+                <div class="p-4">
+                    <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Handicraft</span>
+                    <h3 class="font-bold text-gray-900 text-base mt-1">Chanderi Silk Sarees</h3>
+                    <p class="text-xs text-gray-600 mt-2">Lightweight sheer texture woven with gold zari borders, carrying centuries of tradition.</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Dal Bafla" class="w-full h-44 object-cover">
+                <div class="p-4">
+                    <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Traditional Meal</span>
+                    <h3 class="font-bold text-gray-900 text-base mt-1">Malwa Dal Bafla</h3>
+                    <p class="text-xs text-gray-600 mt-2">Boiled and ghee-roasted wheat balls served with spicy lentils, laddu, and chutney.</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="Gond Tribal Art" class="w-full h-44 object-cover">
+                <div class="p-4">
+                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Folk Art</span>
+                    <h3 class="font-bold text-gray-900 text-base mt-1">Gond Painting</h3>
+                    <p class="text-xs text-gray-600 mt-2">Vibrant indigenous tribal art form depicting nature, sacred flora, and forest wildlife.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TRIP PLANNER WIZARD -->
+    <section id="planner" class="py-12 bg-mpForest text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold text-mpGold uppercase tracking-widest">Smart Itinerary Assistant</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold mt-1">Plan Your Dream MP Trip</h2>
+                <p class="text-xs md:text-sm text-emerald-100 mt-2">Select your travel style and get an instant custom itinerary recommendation.</p>
+            </div>
+
+            <div class="bg-white text-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Travel Style</label>
+                        <select id="planner-style" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-mpRed outline-none">
+                            <option value="wildlife">Wildlife & Nature Safari</option>
+                            <option value="heritage">Heritage & Fort Architecture</option>
+                            <option value="spiritual">Spiritual & Pilgrimage</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Duration</label>
+                        <select id="planner-days" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-mpRed outline-none">
+                            <option value="3">3 Days (Short Escape)</option>
+                            <option value="5">5 Days (Classic Tour)</option>
+                            <option value="7">7 Days (Grand MP Explorer)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Traveling With</label>
+                        <select id="planner-group" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-mpRed outline-none">
+                            <option value="family">Family & Kids</option>
+                            <option value="couple">Couple / Friends</option>
+                            <option value="solo">Solo Traveler</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="generateItinerary()" class="w-full bg-mpRed hover:bg-red-700 text-white font-bold py-3 rounded-lg text-sm tracking-wide shadow-md transition">
+                    Generate Custom Itinerary
+                </button>
+
+                <!-- Generated Output -->
+                <div id="planner-result" class="mt-6 pt-6 border-t border-gray-100 hidden">
+                    <h4 class="font-extrabold text-lg text-gray-900 mb-2" id="result-title">Your Recommended Itinerary</h4>
+                    <ul class="space-y-3 text-xs md:text-sm text-gray-700" id="result-list">
+                        <!-- Filled dynamically -->
+                    </ul>
+                    <button onclick="openBookingModal('Planner Customized Tour')" class="mt-4 inline-block bg-mpGold hover:bg-yellow-600 text-black font-bold px-5 py-2 rounded-lg text-xs shadow">Book This Itinerary</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-white font-bold text-lg mb-3">MP Tourism</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">Official Tourism Portal concept showcasing heart of India's cultural heritage, wildlife sanctuaries, and serene natural beauty.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-sm mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                    <li><a href="#destinations" class="hover:text-white transition">Top Destinations</a></li>
+                    <li><a href="#regions" class="hover:text-white transition">Regional Explorer</a></li>
+                    <li><a href="#planner" class="hover:text-white transition">Smart Trip Planner</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-sm mb-3">Key Attractions</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-white transition">Khajuraho Temples</a></li>
+                    <li><a href="#" class="hover:text-white transition">Bandhavgarh Tigers</a></li>
+                    <li><a href="#" class="hover:text-white transition">Mahakaleshwar Ujjain</a></li>
+                    <li><a href="#" class="hover:text-white transition">Bhedaghat Marble Rocks</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold text-sm mb-3">Contact Support</h4>
+                <p class="text-xs mb-2"><i class="fa-solid fa-phone mr-2 text-mpGold"></i> 1800-233-7777 (Toll Free)</p>
+                <p class="text-xs mb-4"><i class="fa-solid fa-envelope mr-2 text-mpGold"></i> info@mptourism.gov.in</p>
+                <div class="flex gap-3 text-lg text-white">
+                    <a href="#" class="hover:text-mpGold"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-mpGold"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-mpGold"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-mpGold"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-gray-800 text-center text-xs text-gray-500">
+            &copy; 2026 Madhya Pradesh Tourism Development Corporation. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <div class="fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 z-40 md:hidden flex justify-around py-2.5 shadow-lg">
+        <a href="#home" class="flex flex-col items-center text-xs text-gray-600 hover:text-mpRed">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] mt-0.5">Home</span>
+        </a>
+        <a href="#destinations" class="flex flex-col items-center text-xs text-gray-600 hover:text-mpRed">
+            <i class="fa-solid fa-compass text-lg"></i>
+            <span class="text-[10px] mt-0.5">Places</span>
+        </a>
+        <a href="#planner" class="flex flex-col items-center text-xs text-gray-600 hover:text-mpRed">
+            <i class="fa-solid fa-route text-lg"></i>
+            <span class="text-[10px] mt-0.5">Planner</span>
+        </a>
+        <button onclick="toggleBookmarks()" class="flex flex-col items-center text-xs text-gray-600 hover:text-mpRed relative">
+            <i class="fa-solid fa-bookmark text-lg"></i>
+            <span class="text-[10px] mt-0.5">Saved</span>
+        </button>
+    </div>
+
+    <!-- BOOKMARK / SAVED ITEMS SLIDE-OVER DRAWER -->
+    <div id="bookmark-drawer" class="fixed inset-0 z-50 bg-black/50 hidden backdrop-blur-sm flex justify-end transition-opacity">
+        <div class="w-full max-w-md bg-white h-full p-6 overflow-y-auto flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex justify-between items-center pb-4 border-b">
+                    <h3 class="font-extrabold text-lg text-gray-900">Saved Destinations</h3>
+                    <button onclick="toggleBookmarks()" class="text-gray-500 hover:text-black"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="bookmark-list" class="divide-y divide-gray-100 my-4">
+                    <!-- Dynamic Bookmarks -->
+                </div>
+            </div>
+            <button onclick="openBookingModal('Saved Places Package')" class="w-full bg-mpRed text-white py-3 rounded-xl font-bold text-sm shadow-md">Book Saved Items Package</button>
+        </div>
+    </div>
+
+    <!-- INQUIRY / BOOKING MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/60 hidden backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-extrabold text-gray-900 mb-1">Book Tour Package</h3>
+            <p id="modal-package-title" class="text-xs text-mpRed font-semibold mb-4">Package: General Inquiry</p>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Full Name</label>
+                    <input type="text" required placeholder="Enter your full name" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:ring-2 focus:ring-mpRed">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Phone Number</label>
+                    <input type="tel" required placeholder="Mobile number" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:ring-2 focus:ring-mpRed">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Travel Date</label>
+                    <input type="date" required class="w-full bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:ring-2 focus:ring-mpRed">
+                </div>
+                <button type="submit" class="w-full bg-mpRed hover:bg-red-700 text-white font-bold py-3 rounded-lg text-sm shadow-md">Confirm Booking Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Data Store
+        const destinationsData = [
+            {
+                id: 'khajuraho',
+                title: 'Khajuraho Temples',
+                category: 'heritage',
+                location: 'Chhatarpur',
+                image: 'https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=600&q=80',
+                desc: 'Famous for its ancient Nagara-style architectural temples and stone sculptures.'
+            },
+            {
+                id: 'bandhavgarh',
+                title: 'Bandhavgarh National Park',
+                category: 'wildlife',
+                location: 'Umaria',
+                image: 'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?auto=format&fit=crop&w=600&q=80',
+                desc: 'Dense biodiversity park renowned for Royal Bengal Tigers and ancient hillfort.'
+            },
+            {
+                id: 'ujjain',
+                title: 'Mahakaleshwar Temple',
+                category: 'spiritual',
+                location: 'Ujjain',
+                image: 'https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=600&q=80',
+                desc: 'One of the 12 sacred Jyotirlingas, situated on the banks of holy Shipra River.'
+            },
+            {
+                id: 'bhedaghat',
+                title: 'Bhedaghat Marble Rocks',
+                category: 'nature',
+                location: 'Jabalpur',
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80',
+                desc: 'Soaring 100ft marble gorges alongside Narmada river with Dhuandhar Falls.'
+            },
+            {
+                id: 'sanchi',
+                title: 'Sanchi Stupa',
+                category: 'heritage',
+                location: 'Raisen',
+                image: 'https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=600&q=80',
+                desc: 'Ancient Buddhist monument commissioned by Emperor Ashoka in 3rd Century BCE.'
+            },
+            {
+                id: 'orchha',
+                title: 'Orchha Fort Complex',
+                category: 'heritage',
+                location: 'Niwari',
+                image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=600&q=80',
+                desc: 'Picturesque medieval fort city on Betwa river with grand palaces and cenotaphs.'
+            }
+        ];
+
+        const regionData = {
+            'malwa': {
+                title: 'Malwa Region',
+                desc: 'Famous for rolling plateaus, rich culinary heritage, religious hubs like Ujjain, and historic romantic fort city of Mandu.',
+                highlights: ['Indore Street Food', 'Mahakaleshwar Temple', 'Mandu Palaces', 'Omkareshwar'],
+                image: 'https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=800&q=80'
+            },
+            'mahakaushal': {
+                title: 'Mahakaushal Region',
+                desc: 'The wild tiger haven of India, surrounded by Satpura hills, dense sal forests, and stunning natural marble river gorges.',
+                highlights: ['Kanha National Park', 'Bhedaghat Falls', 'Pench Tiger Reserve', 'Pachmarhi Hill Station'],
+                image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'
+            },
+            'bundelkhand': {
+                title: 'Bundelkhand Region',
+                desc: 'A land of legendary valor, temple art masterpieces, and architectural grandeur along peaceful rivers.',
+                highlights: ['Khajuraho Temples', 'Orchha Fort', 'Panna Tiger Reserve', 'Chhatarpur Heritage'],
+                image: 'https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=800&q=80'
+            },
+            'gwalior-chambal': {
+                title: 'Gwalior & Chambal',
+                desc: 'Northern crown of MP showcasing formidable hill forts, classical musical heritage, and dramatic Chambal ravines.',
+                highlights: ['Gwalior Fort', 'Jai Vilas Palace', 'Mitawali & Padavali', 'Chambal Wildlife Sanctuary'],
+                image: 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=800&q=80'
+            }
+        };
+
+        let bookmarks = [];
+
+        // Carousel Controller
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slide-dot');
+
+        function setSlide(index) {
+            slides[currentSlide].classList.add('opacity-0');
+            slides[currentSlide].classList.remove('opacity-100');
+            dots[currentSlide].classList.remove('w-8');
+            dots[currentSlide].classList.add('w-2', 'bg-white/50');
+
+            currentSlide = index;
+
+            slides[currentSlide].classList.remove('opacity-0');
+            slides[currentSlide].classList.add('opacity-100');
+            dots[currentSlide].classList.add('w-8', 'bg-white');
+            dots[currentSlide].classList.remove('w-2', 'bg-white/50');
+        }
+
+        setInterval(() => {
+            let next = (currentSlide + 1) % slides.length;
+            setSlide(next);
+        }, 5000);
+
+        // Destination Card Renderer
+        function renderDestinations(category = 'all') {
+            const container = document.getElementById('destination-grid');
+            container.innerHTML = '';
+
+            const filtered = category === 'all' ? destinationsData : destinationsData.filter(d => d.category === category);
+
+            filtered.forEach(item => {
+                const isSaved = bookmarks.some(b => b.id === item.id);
+                const card = `
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                                <button onclick="toggleSaveItem('${item.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full glass-card flex items-center justify-center text-gray-700 hover:text-mpRed transition">
+                                    <i class="${isSaved ? 'fa-solid text-mpRed' : 'fa-regular'} fa-bookmark"></i>
+                                </button>
+                                <span class="absolute bottom-3 left-3 px-2.5 py-1 bg-black/60 backdrop-blur-md text-white text-[10px] font-medium rounded-md">
+                                    <i class="fa-solid fa-location-dot mr-1"></i>${item.location}
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="font-bold text-gray-900 text-lg mb-1">${item.title}</h3>
+                                <p class="text-xs text-gray-600 line-clamp-2">${item.desc}</p>
+                            </div>
+                        </div>
+                        <div class="px-5 pb-5 pt-0 flex items-center justify-between">
+                            <span class="text-[10px] uppercase font-bold text-mpRed bg-red-50 px-2 py-1 rounded">${item.category}</span>
+                            <button onclick="openBookingModal('${item.title}')" class="text-xs font-bold text-gray-900 hover:text-mpRed flex items-center gap-1">
+                                Book Now <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        function filterDestinations(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-mpRed', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            event.target.classList.add('bg-mpRed', 'text-white');
+            event.target.classList.remove('bg-white', 'text-gray-700');
+            renderDestinations(cat);
+        }
+
+        // Region Explorer Switcher
+        function switchRegion(key) {
+            const data = regionData[key];
+            const container = document.getElementById('region-content');
+
+            document.querySelectorAll('.region-tab').forEach(tab => tab.classList.remove('active-tab', 'text-gray-900'));
+            event.target.classList.add('active-tab', 'text-gray-900');
+
+            container.innerHTML = `
+                <div class="p-6 md:p-10 flex flex-col justify-center">
+                    <span class="text-xs font-bold text-mpRed uppercase tracking-wider mb-1">Explore Region</span>
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-3">${data.title}</h3>
+                    <p class="text-xs md:text-sm text-gray-600 mb-6 leading-relaxed">${data.desc}</p>
+                    <h4 class="text-xs font-bold text-gray-900 uppercase mb-3">Key Highlights:</h4>
+                    <div class="grid grid-cols-2 gap-2 mb-6">
+                        ${data.highlights.map(h => `<div class="flex items-center text-xs text-gray-700"><i class="fa-solid fa-check text-mpRed mr-2"></i>${h}</div>`).join('')}
+                    </div>
+                    <button onclick="openBookingModal('${data.title} Explorer')" class="bg-mpRed text-white font-bold text-xs px-6 py-3 rounded-xl self-start shadow-md">Explore ${data.title}</button>
+                </div>
+                <div class="h-64 lg:h-auto">
+                    <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+                </div>
+            `;
+        }
+
+        // Smart Itinerary Generator
+        function generateItinerary() {
+            const style = document.getElementById('planner-style').value;
+            const days = document.getElementById('planner-days').value;
+            const resultBox = document.getElementById('planner-result');
+            const list = document.getElementById('result-list');
+            const title = document.getElementById('result-title');
+
+            title.innerText = `${days}-Day ${style.toUpperCase()} Experience`;
+            list.innerHTML = '';
+
+            let steps = [];
+            if(style === 'wildlife') {
+                steps = ['Day 1: Arrival & Evening Safari in Bandhavgarh', 'Day 2: Morning Elephant Ride & Forest Trail', 'Day 3: Transfer to Kanha & Sunset Point'];
+                if(days >= 5) steps.push('Day 4: Jungle Safari in Kanha Tiger Reserve', 'Day 5: Tribal Cultural Village Tour');
+                if(days >= 7) steps.push('Day 6: Pench National Park Visit', 'Day 7: Departure with souvenirs');
+            } else if(style === 'heritage') {
+                steps = ['Day 1: Explore Khajuraho Temple Complex', 'Day 2: Light & Sound Show at Orchha Fort', 'Day 3: Betwa River Rafting & Cenotaphs'];
+                if(days >= 5) steps.push('Day 4: Gwalior Fort & Jai Vilas Palace', 'Day 5: Mitawali-Padavali Circular Temples');
+                if(days >= 7) steps.push('Day 6: Sanchi Stupa Heritage Walk', 'Day 7: Bhopal Museum of Mankind');
+            } else {
+                steps = ['Day 1: Mahakaleshwar Bhasma Aarti in Ujjain', 'Day 2: Shipra River Ghats & Kal Bhairav', 'Day 3: Omkareshwar Jyotirlinga Temple'];
+                if(days >= 5) steps.push('Day 4: Maheshwar Ahilya Fort Ghats', 'Day 5: Holy Narmada Aarti');
+                if(days >= 7) steps.push('Day 6: Amarkantak Narmada Udgam', 'Day 7: Departure');
+            }
+
+            steps.forEach(s => {
+                list.innerHTML += `<li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-mpRed"></i> ${s}</li>`;
+            });
+
+            resultBox.classList.remove('hidden');
+        }
+
+        // Bookmarks / Saved Drawer
+        function toggleSaveItem(id) {
+            const item = destinationsData.find(d => d.id === id);
+            const index = bookmarks.findIndex(b => b.id === id);
+
+            if(index > -1) {
+                bookmarks.splice(index, 1);
+            } else {
+                bookmarks.push(item);
+            }
+
+            updateBookmarkUI();
+            renderDestinations();
+        }
+
+        function updateBookmarkUI() {
+            const count = document.getElementById('bookmark-count');
+            const list = document.getElementById('bookmark-list');
+
+            if(bookmarks.length > 0) {
+                count.innerText = bookmarks.length;
+                count.classList.remove('hidden');
+            } else {
+                count.classList.add('hidden');
+            }
+
+            list.innerHTML = bookmarks.length === 0 
+                ? '<p class="text-xs text-gray-500 py-4">No saved destinations yet.</p>' 
+                : bookmarks.map(b => `
+                    <div class="py-3 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900">${b.title}</h4>
+                            <span class="text-[10px] text-gray-500">${b.location}</span>
+                        </div>
+                        <button onclick="toggleSaveItem('${b.id}')" class="text-red-500 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `).join('');
+        }
+
+        function toggleBookmarks() {
+            document.getElementById('bookmark-drawer').classList.toggle('hidden');
+        }
+
+        // Modal Logic
+        function openBookingModal(packageTitle) {
+            document.getElementById('modal-package-title').innerText = `Package: ${packageTitle}`;
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! Your inquiry has been submitted. MP Tourism representative will contact you shortly.');
+            closeBookingModal();
+        }
+
+        // Init
+        renderDestinations();
+        switchRegion('malwa');
+    </script>
+</body>
+</html>
